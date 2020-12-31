@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Krub:ital,wght@1,300&display=swap");
 body {
   background-color: #e9ecef !important;
-  font-family: "Krub", sans-serif !important;
+}
+.btn-info {
+  background-color: blueviolet !important;
+  border-color: blueviolet !important;
 }

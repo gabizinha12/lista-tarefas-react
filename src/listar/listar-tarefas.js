@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function ListarTarefas() {
   return (
@@ -9,11 +9,11 @@ function ListarTarefas() {
       <Card.Body>
         <Card.Title>Tarefas</Card.Title>
         <Card.Text>
-          <Router>
-            <Link to="/cadastrar">
-              <Button variant="dark">Me adicione clicando aqui</Button>
-            </Link>
-          </Router>
+          <Link to="/cadastrar">
+            <Button variant="dark" style={{ borderRadius: "50px" }}>
+              Me adicione clicando aqui
+            </Button>
+          </Link>
         </Card.Text>
       </Card.Body>
     </Card>

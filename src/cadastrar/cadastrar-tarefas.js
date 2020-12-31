@@ -74,7 +74,7 @@ function CadastrarTarefa() {
         >
           <Modal.Header closeButton>
             <Modal.Title>Sucesso</Modal.Title>
-            <Modal.Body>Tarefa adicionada com sucesso</Modal.Body>
+            <Modal.Body>Tarefa adicionada com sucesso!</Modal.Body>
           </Modal.Header>
           <Modal.Footer>
             <Button variant="success" onClick={handleFecharModal}>

@@ -6,7 +6,7 @@ import "@testing-library/jest-dom/extend-expect";
 
 describe("teste do componente cadastro de tarefas", () => {
   it("deve renderizar o componente sem erros", () => {
-    const div = document.createElement(div);
+    const div = document.createElement("div");
     ReactDOM.render(<CadastrarTarefa />, div);
     ReactDOM.unmountComponentAtNode(div);
   });

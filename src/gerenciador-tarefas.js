@@ -2,7 +2,11 @@ import "./gerenciador-tarefas.css";
 import Routes from "./routes";
 
 function GerenciadorTarefas() {
-  return <Routes />;
+  return (
+    <div>
+      <Routes></Routes>
+    </div>
+  );
 }
 
 export default GerenciadorTarefas;

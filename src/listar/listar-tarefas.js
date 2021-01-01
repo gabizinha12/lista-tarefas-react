@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
-import { Link, BrowserRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import ItensListaTarefas from "./itens-lista-tarefas";
@@ -28,21 +28,19 @@ function ListarTarefas() {
           <tr>
             <th>Tarefa</th>
             <th>
-              <BrowserRouter>
-                <Link to="/cadastrar">
-                  <Button
-                    variant="dark"
-                    style={{ borderRadius: "50px" }}
-                    data-testid="btn-nova-tarefa"
-                  >
-                    <FontAwesomeIcon
-                      icon={faPlus}
-                      style={{ marginRight: "5px" }}
-                    ></FontAwesomeIcon>
-                    Adicione uma tarefa aqui
-                  </Button>
-                </Link>
-              </BrowserRouter>
+              <Link to="/cadastrar">
+                <Button
+                  variant="dark"
+                  style={{ borderRadius: "50px" }}
+                  data-testid="btn-nova-tarefa"
+                >
+                  <FontAwesomeIcon
+                    icon={faPlus}
+                    style={{ marginRight: "5px" }}
+                  ></FontAwesomeIcon>
+                  Adicione uma tarefa aqui
+                </Button>
+              </Link>
             </th>
           </tr>
         </thead>

@@ -10,8 +10,8 @@ function Routes() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={ListarTarefas} />
-        <Route path="/cadastrar" component={CadastrarTarefas} />
-        <Route path="/atualizar/:id" component={AtualizarTarefas} />
+        <Route exact path="/cadastrar" component={CadastrarTarefas} />
+        <Route exact path="/atualizar/:id" component={AtualizarTarefas} />
       </Switch>
     </BrowserRouter>
   );

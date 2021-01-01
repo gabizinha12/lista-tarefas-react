@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ItensListaTarefas from "./itens-lista-tarefas";
 import Tarefa from "../models/tarefa.model";
-import { render, fireEvent, getByTestId } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 describe("teste do componente que exibe um item na listagem de tarefas", () => {
@@ -35,7 +35,7 @@ describe("teste do componente que exibe um item na listagem de tarefas", () => {
       <table>
         <tbody>
           <ItensListaTarefas
-            tarefas={[tarefa]}
+            tarefas={[tarefaConcluida]}
             recarregarTarefas={() => false}
           />
         </tbody>

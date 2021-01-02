@@ -10,7 +10,6 @@ function ItensListaTarefas(props) {
   function marcarConcluida(tarefa) {
     return tarefa.concluida ? "line-through" : "none";
   }
-
   return props.tarefas.map((tarefa) => (
     <tr key={tarefa.id} data-testid="tarefa">
       <td
@@ -30,6 +29,7 @@ function ItensListaTarefas(props) {
         <BrowserRouter>
           <Link
             href={"/atualizar/" + tarefa.id}
+            to="/atualizar/:id"
             className={tarefa.concluida ? "hidden" : "btn btn-warning btn-sm"}
           >
             <FontAwesomeIcon icon={faEdit} />

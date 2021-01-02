@@ -17,8 +17,7 @@ function ListarTarefas() {
       const tarefasDb = localStorage["tarefas"];
       let listaTarefas = tarefasDb ? JSON.parse(tarefasDb) : [];
       setTarefas(
-        listaTarefas.splice(paginaAtual - 1) * ITENS_POR_PAG,
-        ITENS_POR_PAG
+        listaTarefas.splice((paginaAtual - 1) * ITENS_POR_PAG, ITENS_POR_PAG)
       );
       setTotalItems(listaTarefas.length);
     }
@@ -30,6 +29,7 @@ function ListarTarefas() {
 
   function handleMudarPagina(pagina) {
     setPaginaAtual(pagina);
+    setCarregarTarefas(true);
   }
   return (
     <div className="text-center">
@@ -59,7 +59,7 @@ function ListarTarefas() {
         <tbody>
           <ItensListaTarefas
             tarefas={tarefas}
-            recarregarTarefas={setCarregarTarefas}
+            recarregarTarefas={() => setCarregarTarefas}
           />
         </tbody>
       </Table>
@@ -67,7 +67,7 @@ function ListarTarefas() {
         totalItems={totalItems}
         itensPorPagina={ITENS_POR_PAG}
         paginaAtual={paginaAtual}
-        mudarPagina={handleMudarPagina}
+        mudarPagina={() => handleMudarPagina}
       ></Paginacao>
     </div>
   );

@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Modal, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { faMinusCircle } from "@fortawesome/free-solid-svg-icons";
 
-function ConcluirTarefa(props) {
+function RemoverTarefa(props) {
   const [exibirModal, setExibirModal] = useState(false);
 
   function handleAbrirModal(event) {
@@ -12,50 +12,44 @@ function ConcluirTarefa(props) {
     setExibirModal(true);
   }
 
-  function handleFecharModal() {
+  function handleFecharModal(event) {
     setExibirModal(false);
   }
 
-  function handleConcluirTarefa(event) {
+  function handleRemoverTarefa(event) {
     event.preventDefault();
     const tarefasDb = localStorage["tarefas"];
     let tarefas = tarefasDb ? JSON.parse(tarefasDb) : [];
-    tarefas = tarefas.map((tarefa) => {
-      if (tarefa.id === props.tarefa.id) {
-        tarefa.concluida = true;
-      }
-      return tarefa;
-    });
+    tarefas = tarefas.filter((tarefa) => tarefa.id !== props.tarefa.id);
     localStorage["tarefas"] = JSON.stringify(tarefas);
     setExibirModal(false);
     props.recarregarTarefas(true);
   }
-
   return (
-    <span className={props.className}>
+    <span>
       <Button
-        variant="success"
-        className="btn-sm mr-3"
+        variant="danger"
+        className="btn-sm"
         onClick={handleAbrirModal}
         data-testid="btn-abrir-modal"
         style={{ borderRadius: "50px" }}
       >
-        <FontAwesomeIcon icon={faCheckCircle} />
+        <FontAwesomeIcon icon={faMinusCircle} />
       </Button>
       <Modal show={exibirModal} onHide={handleFecharModal} data-testid="modal">
         <Modal.Header closeButton>
-          <Modal.Title>Concluir tarefa</Modal.Title>
+          <Modal.Title>Remover tarefa</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Deseja realmente concluir a seguinte tarefa?
+          Deseja realmente remover a seguinte tarefa?
           <br />
           <strong>{props.tarefa.nome}</strong>
         </Modal.Body>
         <Modal.Footer>
           <Button
-            variant="success"
-            onClick={handleConcluirTarefa}
-            data-testid="btn-concluir"
+            variant="danger"
+            onClick={handleRemoverTarefa}
+            data-testid="btn-remover"
             style={{ borderRadius: "50px" }}
           >
             Sim
@@ -63,7 +57,6 @@ function ConcluirTarefa(props) {
           <Button
             variant="secondary"
             onClick={handleFecharModal}
-            data-testid="btn-fechar-modal"
             style={{ borderRadius: "50px" }}
           >
             Não
@@ -74,10 +67,9 @@ function ConcluirTarefa(props) {
   );
 }
 
-export default ConcluirTarefa;
-
-ConcluirTarefa.propTypes = {
+RemoverTarefa.propTypes = {
   tarefa: PropTypes.object.isRequired,
   recarregarTarefas: PropTypes.func.isRequired,
-  className: PropTypes.string,
 };
+
+export default RemoverTarefa;

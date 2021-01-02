@@ -73,11 +73,17 @@ function CadastrarTarefa() {
           data-testid="modal"
         >
           <Modal.Header closeButton>
-            <Modal.Title>Sucesso</Modal.Title>
-            <Modal.Body>Tarefa adicionada com sucesso!</Modal.Body>
+            <Modal.Title centered="true">Sucesso</Modal.Title>
+            <Modal.Body className="mt-5">
+              Tarefa adicionada com sucesso!
+            </Modal.Body>
           </Modal.Header>
           <Modal.Footer>
-            <Button variant="success" onClick={handleFecharModal}>
+            <Button
+              variant="success"
+              onClick={handleFecharModal}
+              style={{ borderRadius: "50px" }}
+            >
               Continuar
             </Button>
           </Modal.Footer>

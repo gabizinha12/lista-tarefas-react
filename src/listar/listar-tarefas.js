@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import ItensListaTarefas from "./itens-lista-tarefas";
-import Paginacao from "./paginação";
+import Paginacao from "./paginacao";
 function ListarTarefas() {
-  const ITENS_POR_PAG = 3;
+  const ITEMS_POR_PAG = 3;
+
   const [tarefas, setTarefas] = useState([]);
   const [carregarTarefas, setCarregarTarefas] = useState(true);
   const [totalItems, setTotalItems] = useState(0);
@@ -16,10 +17,10 @@ function ListarTarefas() {
     function obterTarefas() {
       const tarefasDb = localStorage["tarefas"];
       let listaTarefas = tarefasDb ? JSON.parse(tarefasDb) : [];
-      setTarefas(
-        listaTarefas.splice((paginaAtual - 1) * ITENS_POR_PAG, ITENS_POR_PAG)
-      );
       setTotalItems(listaTarefas.length);
+      setTarefas(
+        listaTarefas.splice((paginaAtual - 1) * ITEMS_POR_PAG, ITEMS_POR_PAG)
+      );
     }
     if (carregarTarefas) {
       obterTarefas();
@@ -39,20 +40,22 @@ function ListarTarefas() {
           <tr>
             <th className="h3">Tarefa</th>
             <th>
-              <Link to="/cadastrar">
-                <Button
-                  variant="dark"
-                  style={{ borderRadius: "50px" }}
-                  data-testid="btn-nova-tarefa"
-                  className="mt-2 mb-2"
-                >
-                  <FontAwesomeIcon
-                    icon={faPlus}
-                    style={{ marginRight: "5px" }}
-                  ></FontAwesomeIcon>
-                  Adicione uma tarefa aqui
-                </Button>
-              </Link>
+              <BrowserRouter>
+                <Link to="/cadastrar">
+                  <Button
+                    variant="dark"
+                    style={{ borderRadius: "50px" }}
+                    data-testid="btn-nova-tarefa"
+                    className="mt-2 mb-2"
+                  >
+                    <FontAwesomeIcon
+                      icon={faPlus}
+                      style={{ marginRight: "5px" }}
+                    ></FontAwesomeIcon>
+                    Adicione uma tarefa aqui
+                  </Button>
+                </Link>
+              </BrowserRouter>
             </th>
           </tr>
         </thead>
@@ -65,9 +68,9 @@ function ListarTarefas() {
       </Table>
       <Paginacao
         totalItems={totalItems}
-        itensPorPagina={ITENS_POR_PAG}
+        itemsPorPagina={ITEMS_POR_PAG}
         paginaAtual={paginaAtual}
-        mudarPagina={() => handleMudarPagina}
+        mudarPagina={handleMudarPagina}
       ></Paginacao>
     </div>
   );

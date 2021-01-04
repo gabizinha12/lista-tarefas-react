@@ -7,18 +7,19 @@ function Paginacao(props) {
     return (
       <Pagination.First
         key="pagFirst"
-        onClick={props.mudarPagina(1)}
+        onClick={() => props.mudarPagina(1)}
         disabled={props.paginaAtual === 1}
-      ></Pagination.First>
+      />
     );
   }
+
   function gerarItemAnterior() {
     return (
       <Pagination.Prev
         key="pagPrev"
-        onClick={props.mudarPagina(props.paginaAtual - 1)}
+        onClick={() => props.mudarPagina(props.paginaAtual - 1)}
         disabled={props.paginaAtual === 1}
-      ></Pagination.Prev>
+      />
     );
   }
 
@@ -27,7 +28,7 @@ function Paginacao(props) {
       <Pagination.Item
         key={pagina}
         active={pagina === props.paginaAtual}
-        onClick={props.mudarPagina(pagina)}
+        onClick={() => props.mudarPagina(pagina)}
       >
         {pagina}
       </Pagination.Item>
@@ -40,7 +41,7 @@ function Paginacao(props) {
         key="pagNext"
         onClick={() => props.mudarPagina(props.paginaAtual + 1)}
         disabled={props.paginaAtual === numPaginas}
-      ></Pagination.Next>
+      />
     );
   }
 
@@ -50,7 +51,7 @@ function Paginacao(props) {
         key="pagLast"
         onClick={() => props.mudarPagina(numPaginas)}
         disabled={props.paginaAtual === numPaginas}
-      ></Pagination.Last>
+      />
     );
   }
 
@@ -75,6 +76,9 @@ Paginacao.propTypes = {
   itensPorPagina: PropTypes.number.isRequired,
   paginaAtual: PropTypes.number.isRequired,
   mudarPagina: PropTypes.func.isRequired,
+};
+Paginacao.defaultProps = {
+  itensPorPagina: 3,
 };
 
 export default Paginacao;

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import { Link, BrowserRouter } from "react-router-dom";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 import ConcluirTarefa from "../listar/concluir-tarefa";
 import RemoverTarefa from "../listar/remover-tarefa";
 
@@ -26,15 +26,17 @@ function ItensListaTarefas(props) {
           className={tarefa.concluida ? "hidden" : null}
         />
         &nbsp;
-        <BrowserRouter>
+        <Router>
           <Link
             href={"/atualizar/" + tarefa.id}
-            to="/atualizar/:id"
-            className={tarefa.concluida ? "hidden" : "btn btn-warning btn-sm"}
+            to={"/atualizar/" + tarefa.id}
+            className={
+              tarefa.concluida ? "hidden" : "btn btn-warning btn-sm mr-5"
+            }
           >
             <FontAwesomeIcon icon={faEdit} />
           </Link>
-        </BrowserRouter>
+        </Router>
         &nbsp;
         <RemoverTarefa
           tarefa={tarefa}

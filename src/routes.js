@@ -9,9 +9,9 @@ function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={ListarTarefas} />
-        <Route exact path="/cadastrar" component={CadastrarTarefas} />
-        <Route exact path="/atualizar/:id" component={AtualizarTarefas} />
+        <Route path="/" component={ListarTarefas} />
+        <Route path="/cadastrar" exact component={CadastrarTarefas} />
+        <Route path="/atualizar/:id" exact component={AtualizarTarefas} />
       </Switch>
     </BrowserRouter>
   );

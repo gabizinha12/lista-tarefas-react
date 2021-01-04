@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, Jumbotron, Modal } from "react-bootstrap";
 import Tarefa from "../models/tarefa.model";
-import { Link, useHistory, BrowserRouter } from "react-router-dom";
+import { Link, useHistory, BrowserRouter as Router } from "react-router-dom";
 
 function CadastrarTarefa() {
   const [tarefa, setTarefa] = useState("");
@@ -58,13 +58,13 @@ function CadastrarTarefa() {
             >
               Cadastrar
             </Button>
-            <BrowserRouter>
+            <Router>
               <Link to="/">
                 <Button variant="info ml-2" style={{ borderRadius: "50px" }}>
                   Voltar
                 </Button>
               </Link>
-            </BrowserRouter>
+            </Router>
           </Form.Group>
         </Form>
         <Modal

@@ -35,7 +35,7 @@ function ConcluirTarefa(props) {
     <span className={props.className}>
       <Button
         variant="success"
-        className="btn-sm mr-3"
+        className="btn-sm mr-5"
         onClick={handleAbrirModal}
         data-testid="btn-abrir-modal"
         style={{ borderRadius: "50px" }}

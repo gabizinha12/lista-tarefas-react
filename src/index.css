@@ -1,3 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 .hidden {
   display: none;
+}
+body {
+  font-family: "Nunito", sans-serif !important;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination li {
+  display: block;
 }
